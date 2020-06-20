@@ -1,6 +1,5 @@
-import React, { Fragment } from 'react'
+import React, { Fragment} from 'react'
 import Case from '../Case/Case'
-
 
 const CoronaDisplay = props=>{
     const Cases = props.cases.map((countryCase)=>
@@ -9,7 +8,8 @@ const CoronaDisplay = props=>{
         totalCases = {countryCase.TotalConfirmed}
         deaths = {countryCase.TotalDeaths}
         recovered = {countryCase.TotalRecovered}
-        click = {()=> props.clicked(countryCase.CountryCode)}    
+        click={()=>props.click(countryCase.CountryCode)}
+        // click = {()=> props.click(countryCase.CountryCode)}    
         />
     )
 

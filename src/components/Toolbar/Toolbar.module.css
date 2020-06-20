@@ -1,0 +1,11 @@
+.Toolbar{
+    display: block;
+}
+.Toolbar a{
+    text-decoration: none;
+    color: black;
+}
+.Toolbar a:hover,
+.Toolbar a.active{
+    color: orange;
+}
