@@ -11,7 +11,7 @@ class Plot extends Component{
     }
 
     componentDidMount(){
-        AxiosComponent.get(`https://api.covid19api.com/dayone/country/${this.props.match.params.id}`)
+        AxiosComponent.get(`https://api.covid19api.com/total/dayone/country/${this.props.match.params.id}`)
         .then(countryCases=>{
             // console.log(countryCases.data)
             this.setState({
@@ -24,14 +24,19 @@ class Plot extends Component{
                         date : countryCase.Date
                     }
                 })
-            ,
-            country: (countryCases?  countryCases.data[0].Country: null)})
+            ,   
+            country: (countryCases.data[0]?  countryCases.data[0].Country: null)})
         })
     }
 
     render(){
         let chart = <p>Loading...</p>
         if(this.state.cases){
+            if(!this.state.country){
+                chart = <p>The Chinese Government has not disclosed any details. #CKMKB</p>
+                
+            }
+            else{
             const dataPointsDeath = this.state.cases.map(indiCase=>({y:indiCase.death,label:indiCase.date}))
             const dataPointsActive = this.state.cases.map(indiCase=>({y:indiCase.active,label:indiCase.date}))
             const dataPointsRecovered = this.state.cases.map(indiCase=>({y:indiCase.recovered,label:indiCase.date}))
@@ -73,7 +78,7 @@ class Plot extends Component{
                 }
                 ]
             }
-            chart =  <CanvasJSChart options={options}/>
+            chart =  <CanvasJSChart options={options}/>}
 }
         return (
             <div>
