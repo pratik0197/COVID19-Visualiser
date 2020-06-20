@@ -1,0 +1,8 @@
+.Case{
+    height: 100%;
+    width: 80%;
+    box-sizing: border-box;
+    box-shadow: 1px 2px gray;
+    text-align: center;
+    align-items: center;
+}
